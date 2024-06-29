@@ -3,7 +3,7 @@ from frappe import _
 
 def get_employee_by_user(user):
     if not user:
-        user = frappe.session.user
+        raise ValueError("User ID must be provided")
     try:
         employee = frappe.get_value("Employee", {"user_id": user}, "name")
         if not employee:
